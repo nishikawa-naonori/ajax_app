@@ -1,0 +1,15 @@
+<%# このファイルはルーティング %>
+<h1>新規投稿ページ</h1>
+
+<%= form_with url: "/posts", method: :post, local: true do |form| %>
+  <%= form.text_field :content %>
+  <%= form.submit '投稿する' %>
+<% end %>
+
+<%# 下記の記述では裏側の全く違う動きになるので、必要な記述を追加しないと上記と同じにはならない %>
+
+<form action="/posts" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="Ej1pobsUJOTkVLgRm5LKUnjKB/BBk+Gkultzf1i/cR2iadReouABjRTREhtNjkDZGkFeAaRMMDzbtf3E0CyQMg==">
+  <input type="text" name="content" id="content">
+  <input type="submit" name="commit" value="投稿する" data-disable-with="投稿する">
+</form>
